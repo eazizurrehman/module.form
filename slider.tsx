@@ -1,6 +1,6 @@
 import type { Slider as SliderPrimitive } from "radix-ui";
-import { getFieldKeys } from "@/app/_components/form/_helper";
-import { AppFieldError } from "@/app/_components/form/field-error";
+import { getFieldKeys } from "@/app/_modules/form/_helper";
+import { AppFieldError } from "@/app/_modules/form/field-error";
 import { Field, FieldLabel } from "@/app/_shadcn/field";
 import { Slider } from "@/app/_shadcn/slider";
 

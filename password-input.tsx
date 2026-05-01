@@ -1,10 +1,10 @@
 import type { ComponentProps } from "react";
-import { getFieldKeys } from "@/app/_components/form/_helper";
+import { getFieldKeys } from "@/app/_modules/form/_helper";
 import {
   PasswordInput,
   PasswordInputGenerateAndStrength,
-} from "@/app/_components/form/_password-input";
-import { AppFieldError } from "@/app/_components/form/field-error";
+} from "@/app/_modules/form/_password-input";
+import { AppFieldError } from "@/app/_modules/form/field-error";
 import { Field, FieldLabel } from "@/app/_shadcn/field";
 import type { Input } from "@/app/_shadcn/input";
 

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { RadioGroup as RadioGroupPrimitive } from "radix-ui";
-import { getFieldKeys } from "@/app/_components/form/_helper";
-import { AppFieldError } from "@/app/_components/form/field-error";
+import { getFieldKeys } from "@/app/_modules/form/_helper";
+import { AppFieldError } from "@/app/_modules/form/field-error";
 import {
   Field,
   FieldContent,

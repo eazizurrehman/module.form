@@ -1,9 +1,6 @@
 import type { Select as SelectPrimitive } from "radix-ui";
-import {
-  getFieldKeys,
-  type OptionsArrProp,
-} from "@/app/_components/form/_helper";
-import { AppFieldError } from "@/app/_components/form/field-error";
+import { getFieldKeys, type OptionsArrProp } from "@/app/_modules/form/_helper";
+import { AppFieldError } from "@/app/_modules/form/field-error";
 import { Field, FieldLabel } from "@/app/_shadcn/field";
 import {
   Select,

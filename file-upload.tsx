@@ -2,8 +2,8 @@
 
 import { Upload, X } from "lucide-react";
 import { AppButton } from "@/app/_components/button";
-import { getFieldKeys } from "@/app/_components/form/_helper";
-import { AppFieldError } from "@/app/_components/form/field-error";
+import { getFieldKeys } from "@/app/_modules/form/_helper";
+import { AppFieldError } from "@/app/_modules/form/field-error";
 import { Field } from "@/app/_shadcn/field";
 import {
   FileUpload,

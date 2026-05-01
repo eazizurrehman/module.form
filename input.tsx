@@ -1,5 +1,5 @@
-import { getFieldKeys } from "@/app/_components/form/_helper";
-import { AppFieldError } from "@/app/_components/form/field-error";
+import { getFieldKeys } from "@/app/_modules/form/_helper";
+import { AppFieldError } from "@/app/_modules/form/field-error";
 import { Field, FieldLabel } from "@/app/_shadcn/field";
 import { Input } from "@/app/_shadcn/input";
 

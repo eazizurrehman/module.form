@@ -1,10 +1,10 @@
 import type { Country } from "react-phone-number-input";
-import { getFieldKeys } from "@/app/_components/form/_helper";
+import { getFieldKeys } from "@/app/_modules/form/_helper";
 import {
   PhoneInput,
   type PhoneInputProps,
-} from "@/app/_components/form/_phone-input";
-import { AppFieldError } from "@/app/_components/form/field-error";
+} from "@/app/_modules/form/_phone-input";
+import { AppFieldError } from "@/app/_modules/form/field-error";
 import { Field, FieldLabel } from "@/app/_shadcn/field";
 
 export function AppPhoneInput({
