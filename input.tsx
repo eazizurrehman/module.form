@@ -3,6 +3,16 @@ import { AppFieldError } from "@/app/_modules/form/field-error";
 import { Field, FieldLabel } from "@/app/_shadcn/field";
 import { Input } from "@/app/_shadcn/input";
 
+export type TAppInputProps = React.ComponentProps<"input"> & {
+  field: ReturnType<typeof Field>["props"];
+  label?: string | React.ReactNode;
+  placeholder?: string;
+  className?: string;
+  labelSlot?: React.ReactNode;
+  getValue?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
+  setValue?: boolean;
+};
+
 export function AppInput({
   type = "text",
   field,
@@ -10,14 +20,10 @@ export function AppInput({
   placeholder: placeholderProp,
   className,
   labelSlot,
+  getValue,
+  setValue = true,
   ...props
-}: React.ComponentProps<"input"> & {
-  field: ReturnType<typeof Field>["props"];
-  label?: string | React.ReactNode;
-  placeholder?: string;
-  className?: string;
-  labelSlot?: React.ReactNode;
-}) {
+}: TAppInputProps) {
   const { name, label, placeholder, value, isInvalid, errors, handleChange } =
     getFieldKeys({
       field,
@@ -37,16 +43,19 @@ export function AppInput({
         className={className}
         name={name}
         onChange={(e) => {
-          let value: string | number = e.target.value;
+          const nextValue = getValue
+            ? getValue(e)
+            : type === "number"
+              ? Number(e.target.value)
+              : String(e.target.value);
 
-          if (type === "number") value = Number(value);
-          else value = String(value);
+          handleChange(nextValue as never);
 
-          handleChange(value);
+          props.onChange?.(e);
         }}
         placeholder={placeholder}
         type={type}
-        value={String(value)}
+        value={setValue ? String(value) : undefined}
       />
       {isInvalid && <AppFieldError errors={errors} />}
     </Field>
