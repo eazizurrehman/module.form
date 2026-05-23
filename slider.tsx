@@ -8,11 +8,13 @@ export function AppSlider({
   field,
   label: labelProp,
   className,
+  hasLabel = true,
   ...props
 }: React.ComponentProps<typeof SliderPrimitive.Root> & {
   field: ReturnType<typeof Field>["props"];
   label?: string | React.ReactNode;
   className?: string;
+  hasLabel?: boolean;
 }) {
   const { name, label, value, isInvalid, errors, handleChange } = getFieldKeys({
     field,
@@ -22,7 +24,7 @@ export function AppSlider({
   return (
     <Field className="gap-2" data-invalid={isInvalid}>
       <div className="flex items-center justify-between gap-2">
-        <FieldLabel htmlFor={name}>{label}</FieldLabel>
+        {hasLabel && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
         <span className="text-muted-foreground text-sm">
           {value[0]} to {value[1]}
         </span>

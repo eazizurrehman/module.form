@@ -17,13 +17,16 @@ export function AppMultiField({
   description,
   addLabel,
   pushValue,
+  maxItems = 5,
+  hasLabel = true,
 }: React.ComponentProps<"fieldset"> & {
   field: ReturnType<typeof Field>["props"];
   label?: string | React.ReactNode;
-
   addLabel?: string;
   description?: React.ReactNode | string;
   pushValue: () => void;
+  maxItems?: number;
+  hasLabel?: boolean;
 }) {
   const { label, isInvalid } = getFieldKeys({
     field,
@@ -32,12 +35,12 @@ export function AppMultiField({
 
   return (
     <FieldSet className="gap-4">
-      <FieldLegend variant="label">{label}</FieldLegend>
+      {hasLabel && <FieldLegend variant="label">{label}</FieldLegend>}
       {description && <FieldDescription>{description}</FieldDescription>}
       <FieldGroup className="gap-4">
         {children}
         <AppButton
-          disabled={field.state.value.length >= 5}
+          disabled={field.state.value.length >= maxItems}
           onClick={(e) => {
             e.preventDefault();
             pushValue();

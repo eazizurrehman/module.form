@@ -18,6 +18,7 @@ export function AppCombobox({
   placeholder: placeholderProp,
   options: optionProp,
   disabled,
+  hasLabel = true,
   ...props
 }: ComboboxPrimitive.Value.Props & {
   type?: "number" | "string";
@@ -26,6 +27,7 @@ export function AppCombobox({
   options: OptionsArrProp;
   disabled?: boolean;
   placeholder?: string;
+  hasLabel?: boolean;
 }) {
   const {
     name,
@@ -48,7 +50,7 @@ export function AppCombobox({
 
   return (
     <Field className="gap-2" data-invalid={isInvalid}>
-      <FieldLabel htmlFor={name}>{label}</FieldLabel>
+      {hasLabel && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
       <Combobox
         {...props}
         disabled={disabled}

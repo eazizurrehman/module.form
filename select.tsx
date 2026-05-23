@@ -16,6 +16,7 @@ export function AppSelect({
   label: labelProp,
   placeholder: placeholderProp,
   options: optionProp,
+  hasLabel = true,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Root> & {
   type?: "number" | "string";
@@ -23,6 +24,7 @@ export function AppSelect({
   label?: string;
   options: OptionsArrProp;
   placeholder?: string;
+  hasLabel?: boolean;
 }) {
   const {
     name,
@@ -42,7 +44,7 @@ export function AppSelect({
 
   return (
     <Field className="gap-2" data-invalid={isInvalid}>
-      <FieldLabel htmlFor={name}>{label}</FieldLabel>
+      {hasLabel && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
       <Select
         {...props}
         aria-invalid={isInvalid}

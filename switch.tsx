@@ -9,6 +9,7 @@ export function AppSwitch({
   label: labelProp,
   placeholder: placeholderProp,
   className,
+  hasLabel = true,
   ...props
 }: React.ComponentProps<typeof SwitchPrimitive.Root> & {
   size?: "sm" | "default";
@@ -17,6 +18,7 @@ export function AppSwitch({
   label?: string | React.ReactNode;
   placeholder?: string;
   className?: string;
+  hasLabel?: boolean;
 }) {
   const { name, label, value, isInvalid, errors, handleChange } = getFieldKeys({
     field,
@@ -27,9 +29,11 @@ export function AppSwitch({
   return (
     <Field data-invalid={isInvalid} orientation="horizontal">
       <FieldContent>
-        <FieldLabel className="w-full" htmlFor={name}>
-          {label}
-        </FieldLabel>
+        {hasLabel && (
+          <FieldLabel className="w-full" htmlFor={name}>
+            {label}
+          </FieldLabel>
+        )}
       </FieldContent>
       <Switch
         {...props}

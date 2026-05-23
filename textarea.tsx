@@ -9,10 +9,12 @@ export function AppTextarea({
   label: labelProp,
   placeholder: placeholderProp,
   className,
+  hasLabel = true,
   ...props
 }: React.ComponentProps<"textarea"> & {
   field: ReturnType<typeof Field>["props"];
   label?: string | React.ReactNode;
+  hasLabel?: boolean;
 }) {
   const { name, label, placeholder, value, isInvalid, errors, handleChange } =
     getFieldKeys({
@@ -23,7 +25,7 @@ export function AppTextarea({
 
   return (
     <Field className="gap-2" data-invalid={isInvalid}>
-      <FieldLabel htmlFor={name}>{label}</FieldLabel>
+      {hasLabel && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
       <Textarea
         {...props}
         aria-invalid={isInvalid}

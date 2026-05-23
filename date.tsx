@@ -11,12 +11,14 @@ export function AppDate({
   field,
   label: labelProp,
   placeholder: placeholderProp,
+  hasLabel = true,
 }: React.ComponentProps<typeof DayPicker> & {
   buttonVariant?: React.ComponentProps<typeof Button>["variant"];
 } & {
   field: ReturnType<typeof Field>["props"];
   label?: string | React.ReactNode;
   placeholder?: string;
+  hasLabel?: boolean;
 }) {
   const { name, label, placeholder, value, isInvalid, errors, handleChange } =
     getFieldKeys({
@@ -29,7 +31,7 @@ export function AppDate({
 
   return (
     <Field className="gap-2" data-invalid={isInvalid}>
-      <FieldLabel htmlFor={name}>{label}</FieldLabel>
+      {hasLabel && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
       <Popover onOpenChange={setOpen} open={open}>
         <PopoverTrigger asChild>
           <Button

@@ -27,11 +27,13 @@ export function AppRadioCard({
   orientation = "horizontal",
   options,
   className,
+  hasLabel = true,
   ...props
 }: React.ComponentProps<typeof RadioGroupPrimitive.Root> & {
   field: ReturnType<typeof Field>["props"];
   label?: string;
   options: RadioCardOption[];
+  hasLabel?: boolean;
 }) {
   const { name, label, value, isInvalid, errors, handleChange } = getFieldKeys({
     field,
@@ -41,7 +43,7 @@ export function AppRadioCard({
   return (
     <>
       <FieldSet>
-        <FieldLabel>{label}</FieldLabel>
+        {hasLabel && <FieldLabel>{label}</FieldLabel>}
         <RadioGroup
           {...props}
           className={cn(

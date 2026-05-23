@@ -16,6 +16,7 @@ export function AppPasswordInput({
   hasStrengthChecker = false,
   labelSlot,
   onGenerate,
+  hasLabel = true,
   ...props
 }: Omit<ComponentProps<typeof Input>, "type"> & {
   field: ReturnType<typeof Field>["props"];
@@ -24,6 +25,7 @@ export function AppPasswordInput({
   className?: string;
   hasStrengthChecker?: boolean;
   labelSlot?: React.ReactNode;
+  hasLabel?: boolean;
   onGenerate?: (value: string) => void;
 }) {
   const { name, label, placeholder, value, isInvalid, errors, handleChange } =
@@ -35,7 +37,7 @@ export function AppPasswordInput({
 
   return (
     <Field className="gap-2" data-invalid={isInvalid}>
-      <FieldLabel htmlFor={name}>{label}</FieldLabel>
+      {hasLabel && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
       <PasswordInput
         {...props}
         aria-invalid={isInvalid}

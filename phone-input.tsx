@@ -12,12 +12,14 @@ export function AppPhoneInput({
   label: labelProp,
   placeholder: placeholderProp,
   defaultCountry = "PK",
+  hasLabel = true,
   ...props
 }: Omit<PhoneInputProps, "value" | "onChange" | "name"> & {
   field: ReturnType<typeof Field>["props"];
   label?: string | React.ReactNode;
   placeholder?: string;
   defaultCountry?: Country;
+  hasLabel?: boolean;
 }) {
   const { name, label, placeholder, value, isInvalid, errors, handleChange } =
     getFieldKeys({
@@ -28,7 +30,7 @@ export function AppPhoneInput({
 
   return (
     <Field className="gap-2" data-invalid={isInvalid}>
-      <FieldLabel htmlFor={name}>{label}</FieldLabel>
+      {hasLabel && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
       <PhoneInput
         {...props}
         aria-invalid={isInvalid}

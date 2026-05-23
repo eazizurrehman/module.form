@@ -11,6 +11,7 @@ export type TAppInputProps = React.ComponentProps<"input"> & {
   labelSlot?: React.ReactNode;
   getValue?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
   setValue?: boolean;
+  hasLabel?: boolean;
 };
 
 export function AppInput({
@@ -22,6 +23,7 @@ export function AppInput({
   labelSlot,
   getValue,
   setValue = true,
+  hasLabel = true,
   ...props
 }: TAppInputProps) {
   const { name, label, placeholder, value, isInvalid, errors, handleChange } =
@@ -34,7 +36,7 @@ export function AppInput({
   return (
     <Field className="gap-2" data-invalid={isInvalid}>
       <div className="flex items-center justify-between">
-        <FieldLabel htmlFor={name}>{label}</FieldLabel>
+        {hasLabel && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
         {labelSlot}
       </div>
       <Input
