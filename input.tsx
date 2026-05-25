@@ -35,10 +35,12 @@ export function AppInput({
 
   return (
     <Field className="gap-2" data-invalid={isInvalid}>
-      <div className="flex items-center justify-between">
-        {hasLabel && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
-        {labelSlot}
-      </div>
+      {(hasLabel || labelSlot) && (
+        <div className="flex items-center justify-between">
+          {hasLabel && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
+          {labelSlot}
+        </div>
+      )}
       <Input
         {...props}
         aria-invalid={isInvalid}
